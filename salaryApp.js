@@ -136,7 +136,7 @@ const displayLastItemDialog = function (lastItem) {
   document.getElementById("showSalary").innerText = d3.format(",.0f")(
     lastItem.salary
   );
-  dlg.dialog({
+  dlg.dialog = () => ({
     buttons: {
       Ok: function () {
         $(this).dialog("close");
@@ -146,7 +146,8 @@ const displayLastItemDialog = function (lastItem) {
 };
 
 var showDataError = function (name, salary) {
-  const dlg = document.getElementById("#dialog-error");
+  const dlg = document.getElementById("dialog-error");
+  console.log(dlg)
   dlg.classList.remove("hide");
 
   toggleErrorMessage("#newName", name, "Who the hell you are talking about!");
@@ -178,7 +179,7 @@ const showRecordCount = function (data) {
 
   document.getElementById("numberOfRecords").innerText = data.length;
 
-  dlg.dialog({
+  dlg.dialog = () => ({
     buttons: {
       Ok: function () {
         $(this).dialog("close");
